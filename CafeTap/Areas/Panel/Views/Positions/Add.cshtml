@@ -1,0 +1,51 @@
+﻿@model Infrastructure.Positions.Commands.CreatePositionCommand
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Add Position";
+    ViewData["MainTitle"] = "Position";
+    ViewData["SubTitle"] = "Add";
+    ViewData["employees"] = "active";
+}
+@section scripts
+{
+
+    <script src="~/lib/jquery/jquery.js"></script>
+    <script src="~/lib/jquery-validate/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
+
+}
+<div class="card">
+    <div class="card-header header-elements-inline">
+        <h5 class="card-title">Add Position</h5>
+        <div class="header-elements">
+            <div class="list-icons">
+                <a class="list-icons-item" data-action="collapse"></a>
+                <a class="list-icons-item" data-action="reload"></a>
+                <a class="list-icons-item" data-action="remove"></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <p class="mb-4">Adding Position to website</p>
+        <div class="text-danger" asp-validation-summary="All"></div>
+        <form asp-action="Add" asp-controller="Positions" asp-area="Panel" method="post">
+            <fieldset class="mb-3">
+                <legend class="text-uppercase font-size-sm font-weight-bold">Position Details</legend>
+
+                <div class="form-group row">
+                    <label class="col-form-label col-lg-2">Position Name</label>
+                    <div class="col-lg-3">
+                        <input class="form-control" asp-for="@Model.Name">
+                    </div>
+                </div>
+                <span asp-validation-for="@Model.Name" class="text-danger"></span>
+
+                <button type="submit" class="btn bg-blue ml-3">Add<i class="icon-paperplane ml-2"></i></button>
+            </fieldset>
+        </form>
+
+    </div>
+</div>
+
